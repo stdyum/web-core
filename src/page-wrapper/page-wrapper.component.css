@@ -1,0 +1,20 @@
+:host {
+    min-height: 100%;
+    display: flex;
+    flex-direction: column;
+    gap: var(--indent2);
+}
+
+st-header {
+    position: sticky;
+    top: 0;
+    z-index: 999;
+}
+
+router-outlet {
+    display: none;
+}
+
+:host::ng-deep > router-outlet + * {
+    flex-grow: 1;
+}

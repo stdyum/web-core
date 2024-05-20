@@ -1,0 +1,17 @@
+$palette: (
+        "type": "dark",
+        "primary-background-color": #003049,
+        "secondary-background-color": #eae2b7,
+        "primary-color": #f77f00,
+        "secondary-color": #d62828,
+        "accent-color": #524f81,
+);
+
+
+:root, .dark {
+  @import "palette";
+  @include palette($palette);
+
+  @import "material";
+  @include material($palette);
+}

@@ -1,0 +1,9 @@
+@use "sass:map";
+
+@mixin indent($indent) {
+  @for $i from map-get($indent, "start") through map-get($indent, "end") {
+    --indent#{$i}: #{map-get($indent, "step") * $i};
+
+    --border-radius#{$i}: #{map-get($indent, "step") * $i};
+  }
+}

@@ -1,0 +1,25 @@
+@import "containers";
+
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  height: 100vh;
+  font-family: var(--font-family), serif;
+  font-size: var(--font-size3);
+
+  $container: ("background-color": "primary-background");
+  @include base-container($container);
+}
+
+a, a:visited {
+  text-decoration: none;
+  color: currentColor;
+}
+
+page-wrapper > router-outlet + * {
+  flex-grow: 1;
+}

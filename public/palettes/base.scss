@@ -1,0 +1,9 @@
+@use '@angular/material' as mat;
+@use '@angular/material-experimental' as matx;
+
+:root {
+  @include mat.core();
+  @include mat.all-component-densities(0);
+  @include mat.all-component-typographies();
+  @include mat.all-component-bases(matx.define-theme());
+}

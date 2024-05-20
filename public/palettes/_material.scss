@@ -1,0 +1,115 @@
+@use '@angular/material' as mat;
+@use '@angular/material-experimental' as matx;
+@use "sass:math";
+@use "sass:map";
+
+@use "material-components/components" as mat-components;
+
+@mixin material($palette) {
+  $primary-palette: generatePaletteFromColor(map.get($palette, 'primary-color'));
+  $secondary-palette: generatePaletteFromColor(map.get($palette, 'secondary-color'));
+  $accent-palette: generatePaletteFromColor(map.get($palette, 'accent-color'));
+  $neutral-palette: generatePaletteFromColor(#777777);
+  $neutral-palette: addNeutralToPalette($neutral-palette, #777777);
+  $neutral-variant-palette: generatePaletteFromColor(#707070);
+  $error-palette: generatePaletteFromColor(#de3730);
+
+  $mat_primary_palette: $primary-palette;
+  $mat_primary_palette: map.set($mat_primary_palette, secondary, $secondary-palette);
+  $mat_primary_palette: map.set($mat_primary_palette, secondary, $secondary-palette);
+  $mat_primary_palette: map.set($mat_primary_palette, neutral, $neutral-palette);
+  $mat_primary_palette: map.set($mat_primary_palette, neutral-variant, $neutral-variant-palette);
+  $mat_primary_palette: map.set($mat_primary_palette, error, $error-palette);
+
+  $mat_tertiary_palette: $accent-palette;
+  $mat_tertiary_palette: map.set($mat_tertiary_palette, secondary, $secondary-palette);
+  $mat_tertiary_palette: map.set($mat_tertiary_palette, secondary, $secondary-palette);
+  $mat_tertiary_palette: map.set($mat_tertiary_palette, neutral, $neutral-palette);
+  $mat_tertiary_palette: map.set($mat_tertiary_palette, neutral-variant, $neutral-variant-palette);
+  $mat_tertiary_palette: map.set($mat_tertiary_palette, error, $error-palette);
+
+  $theme: matx.define-theme((
+          color: (
+                  theme-type: map.get($palette, 'type'),
+                  primary: $mat_primary_palette,
+                  tertiary: $mat_tertiary_palette,
+          )
+  ));
+
+  @include mat.all-component-colors($theme);
+  @include mat-components.components($theme);
+}
+
+@function generatePaletteFromColor($color) {
+  @return (
+          0: getPaletteHue($color, 0),
+          10: getPaletteHue($color, 10),
+          20: getPaletteHue($color, 20),
+          25: getPaletteHue($color, 25),
+          30: getPaletteHue($color, 30),
+          35: getPaletteHue($color, 35),
+          40: getPaletteHue($color, 40),
+          50: getPaletteHue($color, 50),
+          60: getPaletteHue($color, 60),
+          70: getPaletteHue($color, 70),
+          80: getPaletteHue($color, 80),
+          90: getPaletteHue($color, 90),
+          95: getPaletteHue($color, 95),
+          98: getPaletteHue($color, 98),
+          99: getPaletteHue($color, 99),
+          100: getPaletteHue($color, 100),
+  );
+}
+
+@function addNeutralToPalette($palette, $color) {
+  $palette: map.set($palette, 4, getPaletteHue($color, 4));
+  $palette: map.set($palette, 6, getPaletteHue($color, 6));
+  $palette: map.set($palette, 12, getPaletteHue($color, 12));
+  $palette: map.set($palette, 17, getPaletteHue($color, 17));
+  $palette: map.set($palette, 22, getPaletteHue($color, 22));
+  $palette: map.set($palette, 24, getPaletteHue($color, 24));
+  $palette: map.set($palette, 87, getPaletteHue($color, 87));
+  $palette: map.set($palette, 92, getPaletteHue($color, 92));
+  $palette: map.set($palette, 94, getPaletteHue($color, 94));
+  $palette: map.set($palette, 96, getPaletteHue($color, 96));
+  @return $palette;
+}
+
+@function getPaletteHue($color, $targetPercentage) {
+  @if ($targetPercentage == 50) {
+    @return $color;
+  }
+
+  @if ($targetPercentage > 50) {
+    @return increaseColorOnPercentage($color, 100 - $targetPercentage * 2);
+  } @else {
+    @return decreaseColorOnPercentage($color, 100 - $targetPercentage * 2);
+  }
+}
+
+@function increaseColorOnPercentage($color, $percentage, $initialPercentage: 100) {
+  $red: red($color);
+  $green: green($color);
+  $blue: blue($color);
+
+  $redIncrease: math.div(255 - $red, $initialPercentage) * $percentage;
+  $greenIncrease: math.div(255 - $green, $initialPercentage) * $percentage;
+  $blueIncrease: math.div(255 - $blue, $initialPercentage) * $percentage;
+
+  $color: rgb($red - $redIncrease, $green - $greenIncrease, $blue - $blueIncrease);
+  @return $color;
+}
+
+@function decreaseColorOnPercentage($color, $percentage, $initialPercentage: 100) {
+  $red: red($color);
+  $green: green($color);
+  $blue: blue($color);
+
+  $redDecrease: math.div($red, $initialPercentage) * $percentage;
+  $greenDecrease: math.div($green, $initialPercentage) * $percentage;
+  $blueDecrease: math.div($blue, $initialPercentage) * $percentage;
+
+  $color: rgb($red - $redDecrease, $green - $greenDecrease, $blue - $blueDecrease);
+  @return $color;
+}
+

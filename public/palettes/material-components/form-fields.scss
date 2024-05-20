@@ -1,0 +1,29 @@
+@use '@angular/material' as mat;
+@use '@angular/material-experimental' as matx;
+
+@mixin form-fields($theme) {
+  @include form-fields-density($theme);
+}
+
+@mixin form-fields-density($theme) {
+  mat-form-field.mat-density-1, .form-field-mat-density-1 {
+    @include mat.form-field-density(-1)
+  }
+
+  mat-form-field.mat-density-2, .form-field-mat-density-2 {
+    @include mat.form-field-density(-2)
+  }
+
+  mat-form-field.mat-density-3, .form-field-mat-density-3 {
+    @include mat.form-field-density(-3)
+  }
+
+  mat-form-field.mat-density-4, .form-field-mat-density-4 {
+    @include mat.form-field-density(-4)
+  }
+
+  mat-form-field.mat-density-5, .form-field-mat-density-5 {
+    @include mat.form-field-density(-5)
+  }
+}
+

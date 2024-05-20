@@ -1,0 +1,13 @@
+:root, .font-primary {
+  font-family: "Roboto";
+  --font-size1: 12px;
+  --font-size2: 14px;
+  --font-size3: 16px;
+  --font-size4: 18px;
+  --font-size5: 20px;
+  --font-size6: 24px;
+  --font-size7: 32px;
+  --font-size8: 40px;
+}
+
+/*# sourceMappingURL=primary.css.map */

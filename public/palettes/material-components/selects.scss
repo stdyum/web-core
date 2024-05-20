@@ -1,0 +1,29 @@
+@use '@angular/material' as mat;
+@use '@angular/material-experimental' as matx;
+
+@mixin selects($theme) {
+  @include selects-density($theme);
+}
+
+@mixin selects-density($theme) {
+  select.mat-density-1, mat-select.mat-density-1, .select-mat-density-1 {
+    @include mat.select-density(-1)
+  }
+
+  select.mat-density-2, mat-select.mat-density-2, .select-mat-density-2 {
+    @include mat.select-density(-2)
+  }
+
+  select.mat-density-3, mat-select.mat-density-3, .select-mat-density-3 {
+    @include mat.select-density(-3)
+  }
+
+  select.mat-density-4, mat-select.mat-density-4, .select-mat-density-4 {
+    @include mat.select-density(-4)
+  }
+
+  select.mat-density-5, mat-select.mat-density-5, .select-mat-density-5 {
+    @include mat.select-density(-5)
+  }
+}
+

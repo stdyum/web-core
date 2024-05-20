@@ -1,0 +1,43 @@
+:host {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    width: 100%;
+    padding: var(--indent2);
+    height: 76px;
+}
+
+:host::ng-deep .mat-mdc-form-field-subscript-wrapper {
+    display: none;
+}
+
+.app-name {
+    grid-area: app-name;
+}
+
+fbm-select {
+    grid-area: enrollment;
+}
+
+:host::ng-deep fbm-select mat-form-field {
+    width: 100%;
+}
+
+.actions {
+    grid-area: actions;
+    display: flex;
+    gap: var(--indent1);
+}
+
+a, a:visited {
+    all: unset;
+}
+
+@media (max-width: 550px) {
+    :host {
+        display: grid;
+        grid-template-areas: "app-name actions" "enrollment enrollment";
+        grid-row-gap: var(--indent2);
+        height: auto;
+    }
+}

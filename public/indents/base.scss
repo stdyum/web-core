@@ -1,0 +1,10 @@
+$indent: (
+        "step": 8px,
+        "start": 1,
+        "end": 5,
+);
+
+:root {
+  @import "indents";
+  @include indent($indent);
+}

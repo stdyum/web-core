@@ -1,0 +1,18 @@
+:host {
+    display: flex;
+    gap: var(--indent1);
+    flex-direction: column;
+    padding: var(--indent2);
+}
+
+.icon-wrapper {
+    display: flex;
+    gap: var(--indent1);
+    align-items: center;
+    color: currentColor;
+    text-decoration: none;
+}
+
+.icon-wrapper:visited {
+    color: currentColor;
+}

@@ -1,0 +1,16 @@
+$palette: (
+        "type": "light",
+        "primary-background-color": #eae2b7,
+        "secondary-background-bolor": #003049,
+        "primary-color": #d62828,
+        "secondary-color": #f77f00,
+        "accent-color": #fcbf49,
+);
+
+.light {
+  @import "palette";
+  @include palette($palette);
+
+  @import "material";
+  @include material($palette);
+}

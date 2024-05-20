@@ -1,0 +1,44 @@
+@use '@angular/material' as mat;
+@use '@angular/material-experimental' as matx;
+
+@mixin buttons($theme) {
+  @include buttons-color($theme);
+  @include buttons-density($theme);
+}
+
+@mixin buttons-color($theme) {
+  button.mat-secondary {
+    @include mat.button-color($theme, $color-variant: secondary)
+  }
+
+  button.mat-tertiary {
+    @include mat.button-color($theme, $color-variant: tertiary)
+  }
+
+  button.mat-error {
+    @include mat.button-color($theme, $color-variant: error)
+  }
+}
+
+@mixin buttons-density($theme) {
+  button.mat-density-1 {
+    @include mat.button-density(-1)
+  }
+
+  button.mat-density-2 {
+    @include mat.button-density(-2)
+  }
+
+  button.mat-density-3 {
+    @include mat.button-density(-3)
+  }
+
+  button.mat-density-4 {
+    @include mat.button-density(-4)
+  }
+
+  button.mat-density-5 {
+    @include mat.button-density(-5)
+  }
+}
+

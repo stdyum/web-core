@@ -1,0 +1,37 @@
+@use "sass:map";
+@use "sass:math";
+@use "sass:color";
+
+@mixin palette($palette) {
+  @each $var, $color in $palette {
+    @if($var != "type") {
+      @include vars($var, $color);
+    }
+  }
+}
+
+@mixin vars($name, $color) {
+  --#{$name}: #{$color};
+  --#{$name}-hover: #{darken($color, 5%)};
+  --#{$name}-active: #{darken($color, 10%)};
+
+  --on-#{$name}: #{text-color($color, #000, #fff)}
+}
+
+@function luminance($color) {
+  $red: math.div(red($color), 255);
+  $green: math.div(green($color), 255);
+  $blue: math.div(blue($color), 255);
+
+  @return ($red * 0.2126) + ($green * 0.7152) + ($blue * 0.0722);
+}
+
+@function text-color($color, $dark, $light) {
+  $threshold: 0.5;
+
+  @if luminance($color) > $threshold {
+    @return $dark;
+  } @else {
+    @return $light;
+  }
+}

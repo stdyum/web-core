@@ -1,0 +1,11 @@
+@import url('https://fonts.googleapis.com/css2?family=Comfortaa:wght@300..700&display=swap');
+
+$typography: (
+        "family": "Comfortaa",
+        "sizes": [12px, 14px, 16px, 18px, 20px, 24px, 32px, 40px],
+);
+
+.font-secondary {
+  @import "typography";
+  @include typography($typography);
+}

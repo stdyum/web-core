@@ -1,0 +1,44 @@
+{
+  "name": "@likdan/studyum-core",
+  "description": "core library for studyum",
+  "author": {
+    "name": "LikDan",
+    "email": "likdan.official@gmail.com",
+    "url": "https://github.com/stdyum"
+  },
+  "version": "0.0.6",
+  "scripts": {
+    "ng": "ng",
+    "build": "npm run build:app && npm run build:styles",
+    "build:app": "ng build && npm run build:styles",
+    "build:styles": "sass --no-source-map -I node_modules public/styles.scss dist/public/styles.css",
+    "watch": "npm run watch:app & npm run watch:styles",
+    "watch:app": "ng build --watch",
+    "watch:styles": "sass --no-source-map --watch -I node_modules public/styles.scss dist/public/styles.css"
+  },
+  "peerDependencies": {
+    "@angular/common": "^18.0.0-next.0",
+    "@angular/compiler": "^18.0.0-next.0",
+    "@angular/core": "^18.0.0-next.0",
+    "@angular/forms": "^18.0.0-next.0",
+    "@angular/material": "^18.0.0-next.0",
+    "@angular/material-experimental": "^18.0.0-next.0",
+    "@angular/router": "^18.0.0-next.0",
+    "@likdan/form-builder-material": "^0.0.8",
+    "@likdan/state-mapper": "^0.0.1",
+    "jwt-decode": "^4.0.0",
+    "rxjs": "~7.8.1",
+    "zone.js": "^0.14.4"
+  },
+  "dependencies": {
+    "tslib": "^2.6.2"
+  },
+  "devDependencies": {
+    "@angular-devkit/build-angular": "^18.0.0-next.2",
+    "@angular/cli": "^18.0.0-next.2",
+    "@angular/compiler-cli": "^18.0.0-next.3",
+    "ng-packagr": " ^18.0.0-next.1",
+    "prettier": "^4.0.0-alpha.8",
+    "typescript": "~5.4.4"
+  }
+}

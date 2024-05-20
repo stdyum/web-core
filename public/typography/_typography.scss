@@ -1,0 +1,10 @@
+@use "sass:map";
+@use "sass:list";
+
+@mixin typography($typography) {
+  --font-family: #{map-get($typography, "family")};
+
+  @each $size in map-get($typography, "sizes") {
+    --font-size#{list.index(map-get($typography, "sizes"), $size)}: #{$size};
+  }
+}

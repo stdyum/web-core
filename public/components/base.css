@@ -1,0 +1,100 @@
+.primary-item, .primary-item-clickable {
+  background-color: var(--primary-color);
+  border-radius: var(--border-radius);
+  color: var(--on-primary-color);
+}
+
+.primary-item-clickable {
+  cursor: pointer;
+}
+.primary-item-clickable:hover {
+  background-color: var(--primary-color-hover);
+}
+.primary-item-clickable:active {
+  background-color: var(--primary-color-active);
+}
+
+.secondary, .secondary-clickable {
+  background-color: var(--secondary-color);
+  border-radius: var(--border-radius);
+  color: var(--on-secondary-color);
+}
+
+.secondary-clickable {
+  cursor: pointer;
+}
+.secondary-clickable:hover {
+  background-color: var(--secondary-color-hover);
+}
+.secondary-clickable:active {
+  background-color: var(--secondary-color-active);
+}
+
+.primary-container, .primary-container-clickable {
+  background-color: var(--primary-background-color);
+  border-radius: var(--border-radius);
+  color: var(--on-primary-background-color);
+}
+
+.primary-container-clickable {
+  cursor: pointer;
+}
+.primary-container-clickable:hover {
+  background-color: var(--primary-background-color-hover);
+}
+.primary-container-clickable:active {
+  background-color: var(--primary-background-color-active);
+}
+
+.secondary-container, .secondary-container-clickable {
+  background-color: var(--secondary-background-color);
+  border-radius: var(--border-radius);
+  color: var(--on-secondary-background-color);
+}
+
+.secondary-container-clickable {
+  cursor: pointer;
+}
+.secondary-container-clickable:hover {
+  background-color: var(--secondary-background-color-hover);
+}
+.secondary-container-clickable:active {
+  background-color: var(--secondary-background-color-active);
+}
+
+.accent-container, .accent-container-clickable {
+  background-color: var(--accent-color);
+  border-radius: var(--border-radius);
+  color: var(--on-accent-color);
+}
+
+.accent-container-clickable {
+  cursor: pointer;
+}
+.accent-container-clickable:hover {
+  background-color: var(--accent-color-hover);
+}
+.accent-container-clickable:active {
+  background-color: var(--accent-color-active);
+}
+
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  height: 100vh;
+  font-family: var(--font-family), serif;
+  font-size: var(--font-size3);
+  background-color: var(--primary-background-color);
+  border-radius: var(--border-radius);
+  color: var(--on-primary-background-color);
+}
+
+page-wrapper > router-outlet + * {
+  flex-grow: 1;
+}
+
+/*# sourceMappingURL=base.css.map */

@@ -1,0 +1,27 @@
+<a class="app-name" redirectLink><h1>Studyum</h1></a>
+
+@if (user(); as user) {
+  @if (enrollments$ | async; as enrollments) {
+    <fbm-select
+      class="form-field-mat-density-3"
+      [formControl]="currentEnrollment"
+      [items]="enrollments"
+      [next]="enrollmentsNext"
+      [reload]="enrollmentsReload"
+      [searchable]="false"
+    />
+  }
+}
+
+<div class="actions">
+  @if (user(); as user) {
+    <button mat-flat-button color="danger">SignOut</button>
+  } @else {
+    <a redirectLink="auth" url="login">
+      <button mat-flat-button color="secondary mat-density1">Login</button>
+    </a>
+    <a redirectLink="auth" url="signup">
+      <button mat-flat-button color="primary">SignUp</button>
+    </a>
+  }
+</div>

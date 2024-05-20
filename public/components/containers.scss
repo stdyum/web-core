@@ -1,0 +1,48 @@
+@use "sass:map";
+
+@mixin base-container($container) {
+  background-color: var(--#{map-get($container, "background-color")}-color);
+  border-radius: var(--border-radius#{map-get($container, "border-radius")});;
+  color: var(--on-#{map-get($container, "background-color")}-color);
+}
+
+@mixin clickable-pseudo($container) {
+  cursor: pointer;
+
+  &:hover {
+    background-color: var(--#{map-get($container, "background-color")}-color-hover);
+  }
+  &:active {
+    background-color: var(--#{map-get($container, "background-color")}-color-active);
+  }
+}
+
+@mixin container($name, $container) {
+  .#{$name}, .#{$name}-clickable {
+    @include base-container($container);
+  }
+
+  .#{$name}-clickable {
+    @include clickable-pseudo($container);
+  }
+}
+
+@include container("primary-item", (
+        "background-color": "primary",
+));
+
+@include container("secondary", (
+        "background-color": "secondary",
+));
+
+@include container("primary-container", (
+        "background-color": "primary-background",
+));
+
+@include container("secondary-container", (
+        "background-color": "secondary-background",
+));
+
+@include container("accent-container", (
+        "background-color": "accent",
+));
