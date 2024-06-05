@@ -6,7 +6,7 @@
     "email": "likdan.official@gmail.com",
     "url": "https://github.com/stdyum"
   },
-  "version": "0.0.8",
+  "version": "0.0.9",
   "scripts": {
     "ng": "ng",
     "build": "npm run build:app && npm run build:styles",

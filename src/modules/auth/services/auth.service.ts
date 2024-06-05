@@ -1,6 +1,6 @@
 import { computed, inject, Injectable, Injector, signal } from '@angular/core';
 import { RedirectService } from '../../redirect/services/redirect.service';
-import { BehaviorSubject, Observable, take, tap } from 'rxjs';
+import { BehaviorSubject, finalize, Observable, take, tap } from 'rxjs';
 import { HttpClient } from '@angular/common/http';
 import { AuthResponse } from '../dto/auth.response';
 
@@ -28,7 +28,7 @@ export class AuthService {
     http.post<AuthResponse>('api/sso/v1/authorize', null)
       .pipe(take(1))
       .pipe(tap(this.authResponse.set.bind(this.authResponse)))
-      .pipe(tap(() => this.canMakeHttpRequests$.next(true)))
+      .pipe(finalize(() => this.canMakeHttpRequests$.next(true)))
       .pipe(tap({ error: this.redirectToLandingIfNeeded.bind(this) }))
       .subscribe();
   }
