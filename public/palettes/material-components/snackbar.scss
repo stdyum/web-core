@@ -1,0 +1,13 @@
+@use '@angular/material' as mat;
+@use '@angular/material-experimental' as matx;
+
+@mixin snackbar($theme) {
+  @include snackbar-color($theme);
+}
+
+@mixin snackbar-color($theme) {
+  mat-snack-bar-container.mat-error {
+    --mdc-snackbar-container-color: #{mat.get-theme-color($theme, 'error')};
+    border: 2px solid black;
+  }
+}

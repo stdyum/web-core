@@ -1,9 +1,11 @@
 @import "buttons";
 @import "form-fields";
 @import "selects";
+@import "snackbar";
 
 @mixin components($theme) {
   @include buttons($theme);
   @include form-fields($theme);
   @include selects($theme);
+  @include snackbar($theme);
 }

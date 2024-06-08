@@ -1,7 +1,7 @@
 import { HttpContextToken, HttpInterceptorFn } from '@angular/common/http';
 import { inject } from '@angular/core';
 import { EnrollmentsService } from '../services/enrollments.service';
-import { filter, map, switchMap, takeWhile, tap } from 'rxjs';
+import { filter, map, switchMap } from 'rxjs';
 import { LoadedState } from '@likdan/state-mapper';
 import { Enrollment } from '../models/enrollments.models';
 

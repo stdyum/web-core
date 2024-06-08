@@ -41,3 +41,6 @@ export * from './modules/types_registry/models/rooms.models';
 export * from './modules/types_registry/models/students.models';
 export * from './modules/types_registry/models/subjects.models';
 export * from './modules/types_registry/models/teachers.models';
+
+
+export * from './utils/interceptors';

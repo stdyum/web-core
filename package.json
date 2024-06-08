@@ -24,6 +24,7 @@
     "@angular/material": "^18.0.0-next.0",
     "@angular/material-experimental": "^18.0.0-next.0",
     "@angular/router": "^18.0.0-next.0",
+    "@angular/cdk": "^18.0.0-next.0",
     "@likdan/form-builder-material": "^0.0.9",
     "@likdan/state-mapper": "^0.0.1",
     "jwt-decode": "^4.0.0",
