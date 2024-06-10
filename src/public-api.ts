@@ -6,9 +6,12 @@ export * from './page-wrapper/page-wrapper.component';
 
 
 export * from './interceptors/http-error.interceptor';
-export * from './modules/auth/interceptors/auth.interceptor';
 
 export * from './directives/has-permission.directive';
+
+
+export * from './modules/auth/interceptors/auth.interceptor';
+export * from './modules/auth/services/auth.service';
 
 
 export * from './modules/redirect/services/redirect.service';
@@ -41,6 +44,11 @@ export * from './modules/types_registry/models/rooms.models';
 export * from './modules/types_registry/models/students.models';
 export * from './modules/types_registry/models/subjects.models';
 export * from './modules/types_registry/models/teachers.models';
+
+
+export * from './modules/translation/models/translation';
+export * from './modules/translation/service/translation.service';
+export * from './modules/translation/pipes/translation.pipe';
 
 
 export * from './utils/interceptors';

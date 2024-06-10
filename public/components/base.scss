@@ -23,3 +23,19 @@ a, a:visited {
 page-wrapper > router-outlet + * {
   flex-grow: 1;
 }
+
+.scrolling-fade {
+  border-bottom: 2px solid currentColor;
+  animation: border-bottom-color-keyframe 250ms;
+}
+
+@keyframes border-bottom-color-keyframe {
+  0% {
+    border-bottom: 2px solid transparent;
+  }
+
+  to {
+    border-bottom-color: currentColor;
+  }
+}
+

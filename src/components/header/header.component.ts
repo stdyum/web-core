@@ -10,6 +10,9 @@ import { AsyncPipe } from '@angular/common';
 import { EnrollmentsService } from '../../modules/studyplaces/services/enrollments.service';
 import { FormControl, ReactiveFormsModule } from '@angular/forms';
 import { takeUntilDestroyed } from '@angular/core/rxjs-interop';
+import { RedirectService } from '../../modules/redirect/services/redirect.service';
+import { TranslationService } from '../../modules/translation/service/translation.service';
+import { TranslationPipe } from '../../modules/translation/pipes/translation.pipe';
 
 @Component({
   selector: 'st-header',
@@ -20,6 +23,7 @@ import { takeUntilDestroyed } from '@angular/core/rxjs-interop';
     SelectComponent,
     AsyncPipe,
     ReactiveFormsModule,
+    TranslationPipe,
   ],
   templateUrl: './header.component.html',
   styleUrl: './header.component.css',
@@ -30,14 +34,21 @@ import { takeUntilDestroyed } from '@angular/core/rxjs-interop';
 })
 export class HeaderComponent {
   currentEnrollment = new FormControl<string | null>(null);
-
+  languages = [
+    { display: 'Русский', value: 'ru-ru' },
+    { display: 'English', value: 'en-us' },
+  ];
   private userService = inject(AuthService);
   private enrollmentsService = inject(EnrollmentsService);
-
   enrollments$ = this.enrollmentsService.loadUserEnrollmentsForSelectRedirectingToApplyIfNeeded();
+
+  private redirect = inject(RedirectService);
+  private translationService = inject(TranslationService);
+  currentLanguage = new FormControl<string | null>(this.translationService.currentLanguage());
 
   constructor() {
     this.subscribeToCurrentEnrollment();
+    this.subscribeToCurrentLanguage();
   }
 
   get user() {
@@ -52,6 +63,11 @@ export class HeaderComponent {
     this.enrollmentsService.loadUserEnrollmentsForSelect()
       .pipe(map(v => v!));
 
+  logout(): void {
+    this.userService.logout()
+      .subscribe(() => this.redirect.redirect());
+  }
+
   private subscribeToCurrentEnrollment(): void {
     effect(() => {
       const currentEnrollmentId = this.enrollmentsService.currentEnrollmentId();
@@ -61,6 +77,13 @@ export class HeaderComponent {
     this.currentEnrollment.valueChanges
       .pipe(takeUntilDestroyed())
       .pipe(tap(v => this.enrollmentsService.currentEnrollmentId.set(v)))
+      .subscribe();
+  }
+
+  private subscribeToCurrentLanguage(): void {
+    this.currentLanguage.valueChanges
+      .pipe(takeUntilDestroyed())
+      .pipe(tap(v => this.translationService.set(v ?? 'en-us')))
       .subscribe();
   }
 }

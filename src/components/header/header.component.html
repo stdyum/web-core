@@ -2,8 +2,9 @@
 
 @if (user(); as user) {
   @if (enrollments$ | async; as enrollments) {
+    <div class="spacer"></div>
     <fbm-select
-      class="form-field-mat-density-3"
+      class="enrollment-select form-field-mat-density-3"
       [formControl]="currentEnrollment"
       [items]="enrollments"
       [next]="enrollmentsNext"
@@ -11,17 +12,33 @@
       [searchable]="false"
     />
   }
+  <div class="spacer"></div>
+} @else {
+  <div class="spacer"></div>
 }
 
 <div class="actions">
   @if (user(); as user) {
-    <button mat-flat-button color="danger">SignOut</button>
+    <button mat-flat-button color="danger" (click)="logout()">
+      {{ 'header_logout' | translation }}
+    </button>
   } @else {
     <a redirectLink="auth" url="login">
-      <button mat-flat-button color="secondary mat-density1">Login</button>
+      <button mat-flat-button color="secondary mat-density1">
+        {{ 'header_login' | translation }}
+      </button>
     </a>
     <a redirectLink="auth" url="signup">
-      <button mat-flat-button color="primary">SignUp</button>
+      <button mat-flat-button color="primary">
+        {{ 'header_signup' | translation }}
+      </button>
     </a>
   }
 </div>
+
+<fbm-select
+  class="language-select form-field-mat-density-3"
+  [formControl]="currentLanguage"
+  [items]="languages"
+  [searchable]="false"
+/>

@@ -3,6 +3,7 @@ import { RedirectService } from '../../redirect/services/redirect.service';
 import { BehaviorSubject, finalize, Observable, take, tap } from 'rxjs';
 import { HttpClient } from '@angular/common/http';
 import { AuthResponse } from '../dto/auth.response';
+import { Params } from '@angular/router';
 
 @Injectable({
   providedIn: 'root',
@@ -41,6 +42,18 @@ export class AuthService {
       .pipe(tap(this.authResponse.set.bind(this.authResponse)))
       .pipe(tap(() => this.canMakeHttpRequests$.next(true)))
       .pipe(tap({ error: this.redirectToAuth.bind(this) }));
+  }
+
+  saveTokens(request: Params): Observable<void> {
+    const http = this.injector.get(HttpClient);
+    return http.post<void>('api/sso/v1/tokens', request)
+      .pipe(take(1));
+  }
+
+  logout(): Observable<void> {
+    const http = this.injector.get(HttpClient);
+    return http.delete<void>('api/sso/v1/logout')
+      .pipe(take(1));
   }
 
   private redirectToAuth(): void {
