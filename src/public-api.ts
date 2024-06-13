@@ -38,12 +38,14 @@ export * from './modules/types_registry/services/rooms.service';
 export * from './modules/types_registry/services/students.service';
 export * from './modules/types_registry/services/subjects.service';
 export * from './modules/types_registry/services/teachers.service';
+export * from './modules/types_registry/services/students-groups.service';
 export * from './modules/types_registry/services/registry.service';
 export * from './modules/types_registry/models/groups.models';
 export * from './modules/types_registry/models/rooms.models';
 export * from './modules/types_registry/models/students.models';
 export * from './modules/types_registry/models/subjects.models';
 export * from './modules/types_registry/models/teachers.models';
+export * from './modules/types_registry/models/students_groups.models';
 
 
 export * from './modules/translation/models/translation';

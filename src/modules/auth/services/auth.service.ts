@@ -15,7 +15,8 @@ export class AuthService {
 
   user = computed(() => this.authResponse()?.user);
   token = computed(() => this.authResponse()?.tokens.access);
-  enrollmentId = computed(() => this.authResponse()?.enrollment.id);
+  enrollmentId = computed(() => this.authResponse()?.enrollment?.id);
+  language = computed(() => this.authResponse()?.language?.code);
 
   private injector = inject(Injector);
   private redirectService = inject(RedirectService);

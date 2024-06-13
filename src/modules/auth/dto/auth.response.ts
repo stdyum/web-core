@@ -8,4 +8,7 @@ export interface AuthResponse {
   enrollment: {
     id: string,
   };
+  language: {
+    code: string,
+  };
 }

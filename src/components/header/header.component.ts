@@ -81,6 +81,11 @@ export class HeaderComponent {
   }
 
   private subscribeToCurrentLanguage(): void {
+    effect(() => {
+      const currentLanguage = this.translationService.currentLanguage();
+      this.currentLanguage.value !== currentLanguage && this.currentLanguage.setValue(currentLanguage);
+    });
+
     this.currentLanguage.valueChanges
       .pipe(takeUntilDestroyed())
       .pipe(tap(v => this.translationService.set(v ?? 'en-us')))

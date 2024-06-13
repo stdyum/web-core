@@ -37,7 +37,6 @@ export class PageWrapperComponent {
       return;
     }
 
-    console.log(el.scrollHeight, el.clientHeight, el.scrollTop);
     classList.toggle('scrolling-fade', el.scrollTop !== 0);
   }
 }
