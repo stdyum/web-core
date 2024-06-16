@@ -1,0 +1,7 @@
+<h2>{{ title() | translation }}</h2>
+<p>{{ body() | translation }}</p>
+
+<div>
+  <button mat-flat-button [color]="cancelButtonColor()" (click)="cancel()">{{ cancelButtonText() | translation }}</button>
+  <button mat-flat-button [color]="confirmButtonColor()" (click)="confirm()">{{ confirmButtonText() | translation }}</button>
+</div>

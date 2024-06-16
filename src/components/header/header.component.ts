@@ -2,9 +2,7 @@ import { ChangeDetectionStrategy, Component, effect, inject } from '@angular/cor
 import { MatButton } from '@angular/material/button';
 import { AuthService } from '../../modules/auth/services/auth.service';
 import { RedirectLinkDirective } from '../../modules/redirect/directives/redirect-link.directive';
-import { SelectComponent } from '@likdan/form-builder-material/src/components';
 import { map, Observable, tap } from 'rxjs';
-import { ItemPaginationItem } from '@likdan/form-builder-material/components/pagination/items/models';
 import { PaginationParams } from '../../modules/pagination/models/pagination.models';
 import { AsyncPipe } from '@angular/common';
 import { EnrollmentsService } from '../../modules/studyplaces/services/enrollments.service';
@@ -13,6 +11,8 @@ import { takeUntilDestroyed } from '@angular/core/rxjs-interop';
 import { RedirectService } from '../../modules/redirect/services/redirect.service';
 import { TranslationService } from '../../modules/translation/service/translation.service';
 import { TranslationPipe } from '../../modules/translation/pipes/translation.pipe';
+import { SelectComponent } from '@likdan/form-builder-material/controls/components/selects/select';
+import { ItemPaginationItem } from '@likdan/form-builder-material/pagination';
 
 @Component({
   selector: 'st-header',

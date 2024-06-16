@@ -54,3 +54,6 @@ export * from './modules/translation/pipes/translation.pipe';
 
 
 export * from './utils/interceptors';
+
+
+export * from './dialogs/confirmation/confirmation.component';

@@ -2,7 +2,7 @@ import { inject, Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { map, Observable } from 'rxjs';
 import { PaginationParams } from '../../pagination/models/pagination.models';
-import { Item, ItemPaginationItem } from '@likdan/form-builder-material/components/pagination/items/models';
+import { Item, ItemPaginationItem } from '@likdan/form-builder-material/pagination';
 import { StudyPlacePagination } from '../models/studyplaces.models';
 
 @Injectable({

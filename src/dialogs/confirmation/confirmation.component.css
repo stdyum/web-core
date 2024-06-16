@@ -1,0 +1,13 @@
+:host {
+    display: flex;
+    flex-direction: column;
+    padding: var(--indent3);
+    gap: var(--indent2);
+}
+
+div {
+    display: flex;
+    justify-content: flex-end;
+    margin-top: var(--indent2);
+    gap: var(--indent1);
+}

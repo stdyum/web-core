@@ -5,7 +5,7 @@ import { map, Observable, tap } from 'rxjs';
 import { StudentPagination } from '../models/students.models';
 import { httpContextWithStudyPlace } from '../../studyplaces/utils/selectedStudyPlaceId';
 import { Subject, SubjectPagination } from '../models/subjects.models';
-import { Item, ItemPaginationItem } from '@likdan/form-builder-material/components/pagination/items/models';
+import { Item, ItemPaginationItem } from '@likdan/form-builder-material/pagination';
 import { TeacherPagination } from '../models/teachers.models';
 
 @Injectable({
@@ -29,10 +29,11 @@ export class SubjectsService {
       .pipe(map(this.mapSubjectsToSelectPagination.bind(this)));
   }
 
-  add(subject: Subject): Observable<void> {
-    return this.http.post<void>(`api/types_registry/v1/subjects`, { list: [subject] }, {
+  add(subject: Subject): Observable<Subject> {
+    return this.http.post<Subject[]>(`api/types_registry/v1/subjects`, { list: [subject] }, {
       context: httpContextWithStudyPlace(),
-    });
+    })
+      .pipe(map(arr => arr[0]));
   }
 
   update(id: string, subject: Subject): Observable<void> {

@@ -3,7 +3,7 @@ import { HttpClient } from '@angular/common/http';
 import { PaginationParams } from '../../pagination/models/pagination.models';
 import { filter, finalize, map, merge, Observable, take, tap } from 'rxjs';
 import { Enrollment, EnrollmentPagination } from '../models/enrollments.models';
-import { Item, ItemPaginationItem } from '@likdan/form-builder-material/components/pagination/items/models';
+import { Item, ItemPaginationItem } from '@likdan/form-builder-material/pagination';
 import { RedirectService } from '../../redirect/services/redirect.service';
 import { toObservable } from '@angular/core/rxjs-interop';
 import { State } from '@likdan/state-mapper';

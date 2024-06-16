@@ -6,7 +6,7 @@
     "email": "likdan.official@gmail.com",
     "url": "https://github.com/stdyum"
   },
-  "version": "0.0.15",
+  "version": "0.0.16",
   "scripts": {
     "ng": "ng",
     "build": "npm run build:app && npm run build:styles",
@@ -25,7 +25,8 @@
     "@angular/material": "^18.0.0-next.0",
     "@angular/material-experimental": "^18.0.0-next.0",
     "@angular/router": "^18.0.0-next.0",
-    "@likdan/form-builder-material": "0.0.11",
+    "@likdan/form-builder-core": "0.0.10",
+    "@likdan/form-builder-material": "0.0.13",
     "@likdan/state-mapper": "^0.0.1",
     "jwt-decode": "^4.0.0",
     "rxjs": "~7.8.1",

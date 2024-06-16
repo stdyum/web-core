@@ -2,7 +2,7 @@ import { inject, Injectable, signal } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { PaginationParams } from '../../pagination/models/pagination.models';
 import { map, Observable, tap } from 'rxjs';
-import { Item, ItemPaginationItem } from '@likdan/form-builder-material/components/pagination/items/models';
+import { Item, ItemPaginationItem } from '@likdan/form-builder-material/pagination';
 import { Teacher, TeacherPagination } from '../models/teachers.models';
 import { httpContextWithStudyPlace } from '../../studyplaces/utils/selectedStudyPlaceId';
 
@@ -24,10 +24,11 @@ export class TeachersService {
       .pipe(map(this.mapTeachersToSelectPagination.bind(this)));
   }
 
-  add(teacher: Teacher): Observable<void> {
-    return this.http.post<void>(`api/types_registry/v1/teachers`, { list: [teacher] }, {
+  add(teacher: Teacher): Observable<Teacher> {
+    return this.http.post<Teacher[]>(`api/types_registry/v1/teachers`, { list: [teacher] }, {
       context: httpContextWithStudyPlace(),
-    });
+    })
+      .pipe(map(arr => arr[0]));
   }
 
   update(id: string, teacher: Teacher): Observable<void> {

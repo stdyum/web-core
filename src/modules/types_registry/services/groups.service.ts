@@ -5,7 +5,7 @@ import { map, Observable, tap } from 'rxjs';
 import { StudentPagination } from '../models/students.models';
 import { Group, GroupPagination } from '../models/groups.models';
 import { httpContextWithStudyPlace } from '../../studyplaces/utils/selectedStudyPlaceId';
-import { Item, ItemPaginationItem } from '@likdan/form-builder-material/components/pagination/items/models';
+import { Item, ItemPaginationItem } from '@likdan/form-builder-material/pagination';
 
 @Injectable({
   providedIn: 'root',
@@ -28,10 +28,11 @@ export class GroupsService {
       .pipe(map(this.mapGroupsToSelectPagination.bind(this)));
   }
 
-  add(group: Group): Observable<void> {
-    return this.http.post<void>(`api/types_registry/v1/groups`, { list: [group] }, {
+  add(group: Group): Observable<Group> {
+    return this.http.post<Group[]>(`api/types_registry/v1/groups`, { list: [group] }, {
       context: httpContextWithStudyPlace(),
-    });
+    })
+      .pipe(map(arr => arr[0]));
   }
 
   update(id: string, group: Group): Observable<void> {

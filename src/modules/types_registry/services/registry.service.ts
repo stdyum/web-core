@@ -6,7 +6,7 @@ import { SubjectsService } from './subjects.service';
 import { TeachersService } from './teachers.service';
 import { Observable, of } from 'rxjs';
 import { PaginationParams } from '../../pagination/models/pagination.models';
-import { ItemPaginationItem } from '@likdan/form-builder-material/components/pagination/items/models';
+import { ItemPaginationItem } from '@likdan/form-builder-material/pagination';
 import { GroupPagination } from '../models/groups.models';
 import { RoomPagination } from '../models/rooms.models';
 import { StudentPagination } from '../models/students.models';
@@ -78,5 +78,45 @@ export class RegistryService {
 
   getLoadedTeachers(): TeacherPagination | null {
     return this.teachers.loadedTeachers();
+  }
+
+  getGroupsPaginatedSelectConfig(): Object {
+    return {
+      items: this.getGroupsPaginatedForSelect(),
+      next: (options: any, meta: any) => this.getGroupsPaginatedForSelect({ ...options, ...meta }),
+      reload: (options: any) => this.getGroupsPaginatedForSelect(options),
+    };
+  }
+
+  getRoomsPaginatedSelectConfig(): Object {
+    return {
+      items: this.getRoomsPaginatedForSelect(),
+      next: (options: any, meta: any) => this.getRoomsPaginatedForSelect({ ...options, ...meta }),
+      reload: (options: any) => this.getRoomsPaginatedForSelect(options),
+    };
+  }
+
+  getStudentsPaginatedSelectConfig(): Object {
+    return {
+      items: this.getStudentsPaginatedForSelect(),
+      next: (options: any, meta: any) => this.getStudentsPaginatedForSelect({ ...options, ...meta }),
+      reload: (options: any) => this.getStudentsPaginatedForSelect(options),
+    };
+  }
+
+  getSubjectsPaginatedSelectConfig(): Object {
+    return {
+      items: this.getSubjectsPaginatedForSelect(),
+      next: (options: any, meta: any) => this.getSubjectsPaginatedForSelect({ ...options, ...meta }),
+      reload: (options: any) => this.getSubjectsPaginatedForSelect(options),
+    };
+  }
+
+  getTeachersPaginatedSelectConfig(): Object {
+    return {
+      items: this.getTeachersPaginatedForSelect(),
+      next: (options: any, meta: any) => this.getTeachersPaginatedForSelect({ ...options, ...meta }),
+      reload: (options: any) => this.getTeachersPaginatedForSelect(options),
+    };
   }
 }
