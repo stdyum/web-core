@@ -119,4 +119,25 @@ export class RegistryService {
       reload: (options: any) => this.getTeachersPaginatedForSelect(options),
     };
   }
+
+  getByNamePaginatedSelectConfig(name: string): Object {
+    switch (name) {
+      case 'group':
+        return this.getGroupsPaginatedSelectConfig();
+      case 'room':
+        return this.getRoomsPaginatedSelectConfig();
+      case 'student':
+        return this.getStudentsPaginatedSelectConfig();
+      case 'subject':
+        return this.getSubjectsPaginatedSelectConfig();
+      case 'teacher':
+        return this.getTeachersPaginatedSelectConfig();
+    }
+
+    return of({
+      items: [],
+      next: () => [],
+      reload: () => [],
+    });
+  }
 }
