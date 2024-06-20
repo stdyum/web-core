@@ -1,4 +1,5 @@
-import { computed, Injectable, signal } from '@angular/core';
+import { computed, inject, Injectable, signal } from '@angular/core';
+import { Router } from '@angular/router';
 
 @Injectable({
   providedIn: 'root',
@@ -13,9 +14,16 @@ export class RedirectService {
   });
   isValidDomain = computed(() => this.hostname().split('.').length >= 2);
 
+  private router = inject(Router);
+
   redirect(subdomain: string = '', url: string = ''): boolean {
     const href = this.generateRedirectUrl(subdomain, url);
     if (!href || window.location.href === href) return false;
+
+    if (href.startsWith(window.location.origin)) {
+      this.router.navigate(['/']).then();
+      return true;
+    }
 
     window.location.href = href;
     return true;

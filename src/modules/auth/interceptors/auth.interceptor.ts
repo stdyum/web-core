@@ -23,7 +23,7 @@ export const authInterceptor: HttpInterceptorFn = (req, next) => {
       if (!authService.canMakeHttpRequests$.value) {
         return authService.canMakeHttpRequests$
           .pipe(first(v => v))
-          .pipe(mergeMap(nextWithToken));
+          .pipe(mergeMap(nextWithToken))
       }
 
       authService.canMakeHttpRequests$.next(false);
