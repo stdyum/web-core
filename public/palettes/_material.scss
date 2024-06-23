@@ -28,7 +28,7 @@
   $mat_tertiary_palette: map.set($mat_tertiary_palette, neutral-variant, $neutral-variant-palette);
   $mat_tertiary_palette: map.set($mat_tertiary_palette, error, $error-palette);
 
-  $theme: matx.define-theme((
+  $theme: mat.define-theme((
           color: (
                   theme-type: map.get($palette, 'type'),
                   primary: $mat_primary_palette,

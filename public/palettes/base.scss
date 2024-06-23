@@ -5,5 +5,5 @@
   @include mat.core();
   @include mat.all-component-densities(0);
   @include mat.all-component-typographies();
-  @include mat.all-component-bases(matx.define-theme());
+  @include mat.all-component-bases(mat.define-theme());
 }

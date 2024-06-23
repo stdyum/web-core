@@ -63,7 +63,7 @@ export class EnrollmentsService {
 
   loadUserEnrollmentsForSelectRedirectingToApplyIfNeeded(params: PaginationParams | null = null): Observable<ItemPaginationItem<PaginationParams> | null> {
     return this.loadUserEnrollments(params)
-      .pipe(tap(() => this.redirectToApplyIfNeeded(null)))
+      .pipe(tap(e => this.redirectToApplyIfNeeded(e)))
       .pipe(map(this.mapEnrollmentsToSelectPagination.bind(this)));
   }
 
