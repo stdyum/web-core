@@ -23,24 +23,24 @@ export class RegistryService {
   private subjects = inject(SubjectsService);
   private teachers = inject(TeachersService);
 
-  getGroupsPaginatedForSelect(params: PaginationParams | null = null): Observable<ItemPaginationItem<PaginationParams> | null> {
+  getGroupsPaginatedForSelect(params: PaginationParams | null = null, studyPlaceId: string | null = null): Observable<ItemPaginationItem<PaginationParams> | null> {
     return this.groups.loadForSelect(params);
   }
 
-  getRoomsPaginatedForSelect(params: PaginationParams | null = null): Observable<ItemPaginationItem<PaginationParams> | null> {
+  getRoomsPaginatedForSelect(params: PaginationParams | null = null, studyPlaceId: string | null = null): Observable<ItemPaginationItem<PaginationParams> | null> {
     return this.rooms.loadForSelect(params);
   }
 
-  getStudentsPaginatedForSelect(params: PaginationParams | null = null): Observable<ItemPaginationItem<PaginationParams> | null> {
-    return this.students.loadForSelect(params);
+  getStudentsPaginatedForSelect(params: PaginationParams | null = null, studyPlaceId: string | null = null): Observable<ItemPaginationItem<PaginationParams> | null> {
+    return this.students.loadForSelect(params, studyPlaceId);
   }
 
-  getSubjectsPaginatedForSelect(params: PaginationParams | null = null): Observable<ItemPaginationItem<PaginationParams> | null> {
+  getSubjectsPaginatedForSelect(params: PaginationParams | null = null, studyPlaceId: string | null = null): Observable<ItemPaginationItem<PaginationParams> | null> {
     return this.subjects.loadForSelect(params);
   }
 
-  getTeachersPaginatedForSelect(params: PaginationParams | null = null): Observable<ItemPaginationItem<PaginationParams> | null> {
-    return this.teachers.loadForSelect(params);
+  getTeachersPaginatedForSelect(params: PaginationParams | null = null, studyPlaceId: string | null = null): Observable<ItemPaginationItem<PaginationParams> | null> {
+    return this.teachers.loadForSelect(params, studyPlaceId);
   }
 
   getByNameForSelect(name: string, params: PaginationParams | null = null): Observable<ItemPaginationItem<PaginationParams> | null> {
@@ -80,7 +80,7 @@ export class RegistryService {
     return this.teachers.loadedTeachers();
   }
 
-  getGroupsPaginatedSelectConfig(): Object {
+  getGroupsPaginatedSelectConfig(studyPlaceId: string | null = null): Object {
     return {
       items: this.getGroupsPaginatedForSelect(),
       next: (options: any, meta: any) => this.getGroupsPaginatedForSelect({ ...options, ...meta }),
@@ -88,7 +88,7 @@ export class RegistryService {
     };
   }
 
-  getRoomsPaginatedSelectConfig(): Object {
+  getRoomsPaginatedSelectConfig(studyPlaceId: string | null = null): Object {
     return {
       items: this.getRoomsPaginatedForSelect(),
       next: (options: any, meta: any) => this.getRoomsPaginatedForSelect({ ...options, ...meta }),
@@ -96,7 +96,7 @@ export class RegistryService {
     };
   }
 
-  getStudentsPaginatedSelectConfig(): Object {
+  getStudentsPaginatedSelectConfig(studyPlaceId: string | null = null): Object {
     return {
       items: this.getStudentsPaginatedForSelect(),
       next: (options: any, meta: any) => this.getStudentsPaginatedForSelect({ ...options, ...meta }),
@@ -104,7 +104,7 @@ export class RegistryService {
     };
   }
 
-  getSubjectsPaginatedSelectConfig(): Object {
+  getSubjectsPaginatedSelectConfig(studyPlaceId: string | null = null): Object {
     return {
       items: this.getSubjectsPaginatedForSelect(),
       next: (options: any, meta: any) => this.getSubjectsPaginatedForSelect({ ...options, ...meta }),
@@ -112,26 +112,26 @@ export class RegistryService {
     };
   }
 
-  getTeachersPaginatedSelectConfig(): Object {
+  getTeachersPaginatedSelectConfig(studyPlaceId: string | null = null): Object {
     return {
-      items: this.getTeachersPaginatedForSelect(),
-      next: (options: any, meta: any) => this.getTeachersPaginatedForSelect({ ...options, ...meta }),
-      reload: (options: any) => this.getTeachersPaginatedForSelect(options),
+      items: this.getTeachersPaginatedForSelect(null, studyPlaceId),
+      next: (options: any, meta: any) => this.getTeachersPaginatedForSelect({ ...options, ...meta }, studyPlaceId),
+      reload: (options: any) => this.getTeachersPaginatedForSelect(options, studyPlaceId),
     };
   }
 
-  getByNamePaginatedSelectConfig(name: string): Object {
+  getByNamePaginatedSelectConfig(name: string, studyPlaceId: string | null = null): Object {
     switch (name) {
       case 'group':
-        return this.getGroupsPaginatedSelectConfig();
+        return this.getGroupsPaginatedSelectConfig(studyPlaceId);
       case 'room':
-        return this.getRoomsPaginatedSelectConfig();
+        return this.getRoomsPaginatedSelectConfig(studyPlaceId);
       case 'student':
-        return this.getStudentsPaginatedSelectConfig();
+        return this.getStudentsPaginatedSelectConfig(studyPlaceId);
       case 'subject':
-        return this.getSubjectsPaginatedSelectConfig();
+        return this.getSubjectsPaginatedSelectConfig(studyPlaceId);
       case 'teacher':
-        return this.getTeachersPaginatedSelectConfig();
+        return this.getTeachersPaginatedSelectConfig(studyPlaceId);
     }
 
     return of({

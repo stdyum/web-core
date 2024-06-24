@@ -26,8 +26,7 @@ export class EnrollmentsService {
       .pipe(filter(v => !!v))
       .pipe(map(v => <EnrollmentState>{ state: 'loaded', data: v })),
     toObservable(this.currentEnrollmentLoading)
-      .pipe(filter(v => v))
-      .pipe(map(() => <EnrollmentState>{ state: 'loading' })),
+      .pipe(map(v => <EnrollmentState>{ state: v ? 'loading' : 'loaded', data: this.currentEnrollment() })),
   );
 
   private http = inject(HttpClient);
