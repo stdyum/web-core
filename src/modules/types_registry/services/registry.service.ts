@@ -98,9 +98,9 @@ export class RegistryService {
 
   getStudentsPaginatedSelectConfig(studyPlaceId: string | null = null): Object {
     return {
-      items: this.getStudentsPaginatedForSelect(),
-      next: (options: any, meta: any) => this.getStudentsPaginatedForSelect({ ...options, ...meta }),
-      reload: (options: any) => this.getStudentsPaginatedForSelect(options),
+      items: this.getStudentsPaginatedForSelect(null, studyPlaceId),
+      next: (options: any, meta: any) => this.getStudentsPaginatedForSelect({ ...options, ...meta }, studyPlaceId),
+      reload: (options: any) => this.getStudentsPaginatedForSelect(options, studyPlaceId),
     };
   }
 
